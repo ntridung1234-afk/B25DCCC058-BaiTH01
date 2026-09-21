@@ -3,6 +3,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentYearSpan) {
         currentYearSpan.textContent = new Date().getFullYear();
     }
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const navLinks = document.getElementById("nav-links");
+    hamburgerBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+    });
+    document.querySelectorAll(".nav-item").forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: "smooth" });
+            }
+            navLinks.classList.remove("show");
+        });
+    });
     const themeToggleBtn = document.getElementById("theme-toggle");
     themeToggleBtn.addEventListener("click", () => {
         const isDark = document.body.getAttribute("data-theme") === "dark";
@@ -25,12 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         charCount.textContent = length;
     });
-
     const contactForm = document.getElementById("contact-form");
     const fullnameInput = document.getElementById("fullname");
     const emailInput = document.getElementById("email");
     const formSuccess = document.getElementById("form-success");
-
     contactForm.addEventListener("submit", (e) => {
         e.preventDefault();
         let isValid = true;
