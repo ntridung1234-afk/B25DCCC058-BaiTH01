@@ -3,7 +3,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentYearSpan) {
         currentYearSpan.textContent = new Date().getFullYear();
     }
-
+    const themeToggleBtn = document.getElementById("theme-toggle");
+    themeToggleBtn.addEventListener("click", () => {
+        const isDark = document.body.getAttribute("data-theme") === "dark";
+        if (isDark) {
+            document.body.removeAttribute("data-theme");
+            themeToggleBtn.textContent = "🌙 Dark";
+        } else {
+            document.body.setAttribute("data-theme", "dark");
+            themeToggleBtn.textContent = "☀️ Light";
+        }
+    });
     const messageInput = document.getElementById("message");
     const charCount = document.getElementById("char-count");
     const maxChars = 200;
