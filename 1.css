@@ -7,6 +7,14 @@
     --border-color: #cccccc;
     --error-color: #dc3545;
 }
+[data-theme="dark"] {
+    --bg-color: #1e1e2e;
+    --text-color: #cdd6f4;
+    --card-bg: #313244;
+    --primary-color: #89b4fa;
+    --accent-color: #b4befe;
+    --border-color: #45475a;
+}
 
 * {
     box-sizing: border-box;
